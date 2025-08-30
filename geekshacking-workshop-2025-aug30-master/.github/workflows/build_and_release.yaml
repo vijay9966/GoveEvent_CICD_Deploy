@@ -16,3 +16,7 @@ jobs:
      uses: actions/checkout@v5
     -id: s04
      run: npm i -g @angular/cli && echo "Installed"
+    -id: s05
+     run: ng build
+    -id: s06
+     run: ls -l   
