@@ -1,0 +1,30 @@
+name: build_and_release
+
+jobs:
+  build_app:
+    runs-on: ubuntu-latest
+    steps:
+    -id: s00
+    -run: echo "github ${{ github.ref_name }}"
+    -d: s01
+    -run: echo "before"
+    -id: s02
+     uses: actions/setup-node@v4
+     with:
+      node-version: 24
+    -id: s03
+     uses: actions/checkout@v5
+    -id: s04
+     run: npm i -g @angular/cli && echo "Installed"
+    -id: s05
+     run: ng build
+    -id: s06
+     run: ls -l dist/continuingbook/browser/
+    -id: s07
+     run: nwtgck/actions-netlify@v3.0
+     with:
+      publish-dir: dist/continuingbook/browser/
+      production-deploy: true
+    env:
+     netlify_auth_token: ${{ secreats.netlify_auth_token }}
+     netlify_site_id: ${{ secreats.netlify_site_id}}  
