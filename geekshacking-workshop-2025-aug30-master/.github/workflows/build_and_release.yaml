@@ -19,4 +19,12 @@ jobs:
     -id: s05
      run: ng build
     -id: s06
-     run: ls -l   
+     run: ls -l dist/continuingbook/browser/
+    -id: s07
+     run: nwtgck/actions-netlify@v3.0
+     with:
+      publish-dir: dist/continuingbook/browser/
+      production-deploy: true
+    env:
+     netlify_auth_token: ${{ secreats.netlify_auth_token }}
+     netlify_site_id: ${{ secreats.netlify_site_id}}  
