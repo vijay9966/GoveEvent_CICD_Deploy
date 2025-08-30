@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     -id: s00
-    -run: echo "github ${{ github.ref_name }}"
-    -d: s01
-    -run: echo "before"
+     run: echo "github ${{ github.ref_name }}"
+    -id: s01
+     run: echo "before"
     -id: s02
      uses: actions/setup-node@v4
      with:
